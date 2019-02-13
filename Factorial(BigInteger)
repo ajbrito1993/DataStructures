@@ -1,0 +1,45 @@
+package com.company;
+
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class Main {
+
+    /**
+     * (Factorial) Using the "BigInteger" class introduced in section 10.9,
+     * you can find the factorial for a large number. Implement the "factorial" method
+     * using recursion. Write a program that prompts the user to enter an integer
+     * and displays the factorial.
+     * **/
+
+    public static void main(String[] args) {
+	// write your code here
+
+        int n = 0;
+        Scanner input = new Scanner(System.in);
+
+        try {
+                System.out.println("Please enter number");
+                n = input.nextInt();
+
+            } catch (Exception e) {
+                System.out.println("Please enter a number!!!");
+                e.printStackTrace();
+            }
+
+        System.out.println(factorial(n));
+
+
+    }
+
+    public static BigInteger factorial(int n){
+
+        if (n == 0){
+            return BigInteger.valueOf(1);
+        }
+
+        else
+            return BigInteger.valueOf(n).multiply(factorial(n - 1));
+
+    }
+}
