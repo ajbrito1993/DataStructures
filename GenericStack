@@ -1,0 +1,57 @@
+package com.company;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        String word = " ";
+
+        GenericStack<String> work = new GenericStack<String>();
+
+        for (int i = 0; i < 5; i++){
+            System.out.println("Enter a name.");
+            word = input.nextLine();
+            work.push(word);
+        }
+
+        while(!(work.isEmpty())){
+            System.out.println(work.pop());
+        }
+
+
+    }
+
+    public static class GenericStack<E> extends ArrayList<E> {
+
+
+        public E getSize(){
+            return this.getSize();
+        }
+
+        public E peek() {
+            return get(size() - 1);
+
+        }
+
+        public boolean isEmpty() {
+
+
+            return this.size() == 0;
+        }
+
+        public void push(E o) {
+            add(o);
+        }
+
+        public E pop() {
+            return (E) this.remove(size() - 1);
+        }
+
+
+
+    }
+}
