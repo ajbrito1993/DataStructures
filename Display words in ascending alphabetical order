@@ -1,0 +1,88 @@
+package com.company;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
+
+public class Main {
+
+
+    /**
+     * Display words in ascending alphabetical order input file
+     *
+     * ***/
+
+    public static Scanner scanFile = null;
+    public static void main(String[] args) {
+
+        /** Scanner object to get input from user **/
+        Scanner input = new Scanner(System.in);
+
+        /** Scanner object to read from File **/
+
+
+
+        /** Variable to store user input for specific file. **/
+        String userInput = " ";
+
+        /** File object to fetch file. **/
+        File userFile;
+
+        /** Variable to grab each word in the file. **/
+        String word = " ";
+
+        /** ArrayList of words from the file. **/
+        List <String> file_Words = new ArrayList<String>();
+
+        /** Prompt user for file name **/
+        System.out.println("Please enter the file name.");
+
+
+        /** try block exception **/
+        try {
+
+            userInput = input.nextLine();
+
+            userFile = new File(userInput);
+
+            if(userFile.exists()){
+                System.out.println("File successfully loaded.");
+            }
+            else {
+                System.out.println("Error!!! No such file exists.");
+            }
+
+            scanFile = new Scanner(userFile);
+        }
+        catch (InputMismatchException e){
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        /** Iterate through the file using the Scanner object "scanFile" grabbing eadh word, then
+         *  adding the word into the Arraylist as it expands.
+         **/
+        while (scanFile.hasNext()) {
+
+            word = scanFile.next();
+
+            word = word.replaceAll("[^a-zA-Z]", " ");
+            file_Words.add(word);
+        }
+
+        /** Use tthe Collections static methosds to sorr the Arraylist
+         * then use the reverseOrder method to sort them in ascending order**/
+        Collections.sort(file_Words, String.CASE_INSENSITIVE_ORDER);
+
+        /**
+         * Dipslaying the list of words.
+         * **/
+
+        for(String w : file_Words){
+            System.out.println(w);
+        }
+
+    }
+}
