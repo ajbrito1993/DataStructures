@@ -1,0 +1,66 @@
+package com.company;
+
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.PriorityQueue;
+
+public class Main {
+
+    /***
+     * Create two priority queues and find their union, difference and intersection.
+     * **/
+
+
+    public static void main(String[] args) {
+
+
+        PriorityQueue<String> priorityQueue1 = new PriorityQueue<String>();
+        priorityQueue1.add("George");
+        priorityQueue1.add("Jim");
+        priorityQueue1.add("John");
+        priorityQueue1.add("Blake");
+        priorityQueue1.add("Kevin");
+        priorityQueue1.add("Michael");
+
+        PriorityQueue<String> priorityQueue2 = new PriorityQueue<String>();
+        priorityQueue2.add("George");
+        priorityQueue2.add("Katie");
+        priorityQueue2.add("Kevin");
+        priorityQueue2.add("Michelle");
+        priorityQueue2.add("Ryan");
+
+        System.out.println("Set 1: " + priorityQueue1);
+        System.out.println("Set 2: " + priorityQueue2);
+        System.out.println("Union: " + findUnion(priorityQueue1, priorityQueue2));
+        System.out.println("Difference: " + findDifference(priorityQueue1, priorityQueue2));
+        System.out.println("Intersection: " + findIntersection(priorityQueue1, priorityQueue2));
+
+
+
+        HashSet<String> hashSet = new HashSet<String>();
+
+
+    }
+
+    public static <E> PriorityQueue<E> findUnion(PriorityQueue<E> p1, PriorityQueue<E> p2) {
+
+        PriorityQueue<E> union = new PriorityQueue<E>(p1);
+        union.addAll(p2);
+        return union;
+    }
+
+    public static <E> PriorityQueue <E> findDifference(PriorityQueue<E> p1, PriorityQueue<E> p2){
+
+        PriorityQueue<E> difference = new PriorityQueue<E>(p1);
+        difference.removeAll(p2);
+
+
+        return  difference;
+    }
+
+    public static <E> PriorityQueue <E> findIntersection(PriorityQueue<E> p1, PriorityQueue<E> p2){
+
+        PriorityQueue<E> intersection = new PriorityQueue<E>(p1);
+        intersection.retainAll(p2);
+        return  intersection;
+    }
